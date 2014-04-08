@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+    ==================
+    PAGE-SPECIFIC META
+    ==================
+-->
+
+<title>consumerfinance.gov Refresh</title>
+<meta name="description" content="Front-end architecture for Project Flapjack">
+
+<!-- Explicit favicon link needed for testing. Remove for production. -->
+<link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.ico"/>
+
+<!--
+    ======
+    STYLES
+    ======
+    The number of stylesheets here must be kept to a minimum. Unless adding a significant amount of CSS that is
+    specific to a single page or section of the site, all new styles should be added to src/static/css/main.less.
+-->
+
+<!--[if lt IE 9]>      <link rel="stylesheet" href="static/css/ie8.min.css"> <![endif]-->
+<link rel="stylesheet" type="text/css" href="static/css/video-js.css">
+<link rel="stylesheet" href="static/css/main.min.css">
+
+<!--
+    ============
+    HEAD SCRIPTS
+    ============
+    The following scripts must be included in the head. DO NOT ADD ANY MORE.
+    All other scripts should go before the closing body tag.
+    If you come across a script that makes a convincing case to be included in
+    the head, then file an issue or PR to discuss including it.
+-->
+<!--[if lt IE 9]>
+    <script src="vendor/html5shiv/html5shiv-printshiv.js"></script>
+<![endif]-->
+<!--[if IE]>
+<style type="text/css">
+    .wrapper {
+       padding: 0px 60px 0px 60px;
+    }
+    .browser_container { 
+      border-left: 1px solid #E3E4E5;
+      border-right: 1px solid #E3E4E5;
+      border-bottom: 1px solid #E3E4E5;
+    }
+</style>
+<![endif]-->
+
+<script type="text/javascript" src="static/js/video.js"></script>
+
+    <script>
+        // Confirm availability of JS and remove no-js class from html
+        var docElement = document.documentElement;
+        docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2');
+    </script>
+
+   <script>
+      videojs.options.flash.swf = "https://github.cfpb.gov/flapjack/CF.gov-Refresh-Preview/static/video/video-js.swf";
+    </script>
+
+</head>
+  <!--[if lt IE 7]>      <body class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <body class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <body class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <body class="no-js"> <!--<![endif]-->
+
+  <header>
+    <div class="wrapper">
+      <div class="logo_wrapper">
+        <img alt="CFPB logo" src="static/img/logo.png">
+      </div>
+      <div class="link_wrapper">
+        <a href="#ux_container" class="jump_link">Organized</a>
+        <a href="#design_container" class="jump_link">Consistent</a>
+        <a href="#responsive_container" class="jump_link">Flexible</a>
+        <a href="#users_container" class="jump_link">User-focused</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="intro_container">
+    <img alt="CFPB green beams background" class="beams" src="static/img/intro_bg.png">
+    <div class="wrapper">
+      <h1 class="superheader">consumerfinance.gov is evolving.</h1>
+      <h2>We’re maturing as an agency. So is our website.</h2>
+      <div id="intro_vid_container">
+        <div id="intro_vid_wrapper">
+          <iframe width="450" height="253" src="//www.youtube.com/embed/ttic5co1oDg?rel=0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <img alt="apple cinema display" src="static/img/cinema.png">
+      </div>
+    </div>
+  </section>
+
+  <section id="users_container">
+    <div class="wrapper">
+      <h1>A better user experience.</h1>
+      <p>In the last six months we’ve spoken with consumers, industry leaders, and people within the bureau. We used what they told us about their needs and the needs of people they work with to create user archetypes. These archetypes have been integral to how we’ve shaped and organized the site.</p>
+      <div id="individual_persona" class="persona_container">
+        <h3>Consumer segments</h3>
+
+        <div id="overwhelmed" class="persona">
+          <h4>Overwhelmed</h4>
+          <p>Overwhelmed users feel stress and can be confused by financial jargon. We want language to be clear, concise, and in small digestible chunks so users can more easily absorb financial information.</p>
+        </div>
+
+        <div id="data_driven" class="persona">
+          <h4>Data-driven</h4>
+          <p>These users want to know more and love to research data. Our designs should be interactive, engaging, and informative so they can drill down to the relevant information.</p>
+        </div>
+
+        <div id="outsourcers" class="persona">
+          <h4>Outsourcers</h4>
+          <p>They trust people they see as experts with previous financial experience to impart the right information. An authoritative but impartial design gives them confidence they are getting the right information.</p>
+        </div>
+
+        <div id="help" class="persona">
+          <h4>Help</h4>
+          <p>Some people need help because they are drowning and in need of financial assistance immediately. We give them friendly information and direct them to financial guidance.</p>
+        </div>
+      </div>
+
+      <div id="industry_persona" class="persona_container">
+        <h3>Non-consumer segments</h3>
+
+        <div id="watcher" class="persona">
+          <h4>Watchers</h4>
+          <p>Watchers keep up with the CFPB as an institution. They don’t just want to see output, they want to see the work we do to get there as it’s happening.</p>
+        </div>
+
+        <div id="industry" class="persona">
+          <h4>Industry</h4>
+          <p>Industry depends on the CFPB’s regulation and enforcement actions to help them serve the financial industry. We should provide these users with the latest news and easy-to-find regulation information.</p>
+        </div>
+
+        <div id="researcher" class="persona">
+          <h4>Researchers</h4>
+          <p>Researchers utilize the CFPB’s data to help them do their jobs. We should provide them with clear documentation and methods to sort/filter our information.</p>
+        </div>
+
+        <div id="educator" class="persona">
+          <h4>Educators &amp; service providers</h4>
+          <p>They promote our information and services to their own audiences. Our content should be easy to navigate and information should be print-friendly.</p>
+        </div>
+      </div>
+
+      <div class="center_button"><a href="https://github.cfpb.gov/pages/flapjack/user-research-results/" class="btn">Check out our research</a></div>
+    </div>
+  </section>
+
+  <section id="responsive_container">
+    <div class="wrapper">
+      <h1>Accessible on any device.</h1>
+      <p>Users are visiting consumerfinance.gov on an ever-increasing variety of devices, so we’re creating a flexible design solution to fit any screen size.</p>
+
+      <div class="responsive_image_container">
+        <div id="macbook_image">
+          <img alt="macbook pro" src="static/img/macbook.png">
+        </div>
+        <div id="ipad_image">
+          <img alt="ipad" src="static/img/ipad.png">
+        </div>
+        <div id="iphone_image">
+          <img alt="iphone" src="static/img/iphone.png">
+        </div>
+      </div>
+
+      <div class="stat_container">
+        <h1>20%</h1>
+        <p>of our overall web traffic now comes from mobile devices.</p>
+      </div>
+      <div class="stat_container">
+        <h1>150%</h1>
+        <p>increase in traffic from mobile devices from 2012&ndash;2013.</p>
+      </div>
+      <div class="stat_container">
+        <h1>1,725</h1>
+        <p>discrete web browser versions accessed our site in November 2013.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="design_container">
+    <div class="wrapper">
+      <h1>Brighter. Friendlier. More consistent.</h1>
+      <p>We’ve taken our research to heart. Our design patterns make the site more beautiful and functional for both our internal and external users.</p>
+
+      <div id="ca-container" class="ca-container">
+        <div class="ca-wrapper">
+          <div class="ca-item">
+            <div class="ca-item-main">
+              <div class="browser_wrapper">
+                <img alt="browser container" src="static/img/browser_lrg.png">
+                <div class="browser_container">
+                  <img alt="refreshed homepage" src="static/img/homepage.jpg">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ca-item">
+            <div class="ca-item-main">
+              <div class="browser_wrapper">
+                <img alt="browser container" src="static/img/browser_lrg.png">
+                <div class="browser_container">
+                  <img alt="refreshed about page" src="static/img/about.jpg">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ca-item">
+            <div class="ca-item-main">
+              <div class="browser_wrapper">
+                <img alt="browser container" src="static/img/browser_lrg.png">
+                <div class="browser_container">
+                  <img alt="refreshed blog" src="static/img/blog.jpg">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ca-item">
+            <div class="ca-item-main">
+              <div class="browser_wrapper">
+                <img alt="browser container" src="static/img/browser_lrg.png">
+                <div class="browser_container">
+                  <img alt="refreshd consumer guides" src="static/img/guides.jpg">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="design_timeline" class="timeline_wrapper">
+        <div class="dot_wrapper">
+          <div class="timeline_dot active"></div>
+          <div class="timeline_dot"></div>
+          <div class="timeline_dot"></div>
+          <div class="timeline_dot"></div>
+        </div>
+      </div>
+
+      <div class="thumbail_wrapper">
+        <div class="img_wrapper">
+          <div class="circle">
+            <img alt="illustration example" src="static/img/illustration.png">
+          </div>
+        </div>
+        <h3>Illustrations that connect</h3>
+        <p>We’ve incorporated more imagery to help users make quicker connections with the content they’re looking for. Images efficiently add context and interest around content. This makes resources feel richer and more approachable.</p>
+      </div>
+      
+      <div class="thumbail_wrapper">
+        <div class="img_wrapper">
+          <div class="circle">
+            <img alt="icons example" src="static/img/icons.png">
+          </div>
+        </div>
+        <h3>Iconography that organizes</h3>
+        <p>Some tools, actions, and information are similar across different parts of the site. Our extensive icon library creates consistent visual cues to organize content and draw users’ attention.</p>
+      </div>
+
+      <div class="thumbail_wrapper">
+        <div class="img_wrapper">
+          <div class="circle">
+            <img alt="typography example" src="static/img/typography.png">
+          </div>
+        </div>
+        <h3>Typography that clarifies</h3>
+        <p>You’ve had enough of the fine print. We revised our type to make it more legible and accessible. It is now lighter and more open.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ux_container">
+    <div class="wrapper">
+      <h1>Getting you where you need to go.</h1>
+      <p>Whether you want to browse for information or solve an issue, we make it easy to find what you need with straightforward organization, easy-to-find content, and menus that provide context and work on mobile.</p>
+
+      <div class="structureDescription_wrapper">
+        <div class="structureDescription current_site_button">
+          <h3>Current site structure</h3>
+          <p>Each audience has to search across all of cf.gov to find the resources they need. It can be difficult for them to find what they need.</p>
+        </div>
+      </div>
+
+      <div class="structureDescription_wrapper">
+        <div class="structureDescription revised_site_button inactive">
+          <h3>Revised site structure</h3>
+          <p>Navigation categories are more focused on specific user groups. Users are more likely to find the resources they need together in one place.</p>
+        </div>
+      </div>
+
+      <div id="current_chart" class="chart_wrapper">
+        <div class="chart_column col1">
+          <div class="category">
+            <h6>Inside the CFPB</h6>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience consumer">
+            <h4>Consumers</h4>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience industry">
+            <h4>Industry</h4>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience watcher">
+            <h4>Watchers</h4>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience researcher">
+            <h4>Researchers</h4>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience educator">
+            <h4>Educators</h4>
+          </div>
+        </div>
+
+        <div class="chart_column col2">
+          <div class="category">
+            <h6>Get Assistance</h6>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience consumer">
+            <h4>Consumers</h4>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience industry">
+            <h4>Industry</h4>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience educator">
+            <h4>Educators</h4>
+          </div>
+        </div>
+
+        <div class="chart_column col3">
+          <div class="category">
+            <h6>Participate</h6>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience consumer">
+            <h4>Consumers</h4>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience watcher">
+            <h4>Watchers</h4>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience researcher">
+            <h4>Researchers</h4>
+          </div>
+        </div>
+
+        <div class="chart_column col4">
+          <div class="category">
+            <h6>Law &amp; regulation</h6>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience industry">
+            <h4>Industry</h4>
+          </div>
+        </div>
+
+        <div class="chart_column col5">
+          <div class="category">
+            <h6>Submit a complaint</h6>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience consumer">
+            <h4>Consumers</h4>
+          </div>
+        </div>
+      </div>
+
+      <div id="revised_chart" class="chart_wrapper">
+        <div class="chart_column col1">
+          <div class="category">
+            <h6>Consumer guides</h6>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience consumer">
+            <h4>Consumers</h4>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience educator">
+            <h4>Educators</h4>
+          </div>
+        </div>
+
+        <div class="chart_column col2">
+          <div class="category">
+            <h6>Complaints</h6>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience consumer">
+            <h4>Consumers</h4>
+          </div>
+        </div>
+
+        <div class="chart_column col3">
+          <div class="category">
+            <h6>Data &amp; research</h6>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience researcher">
+            <h4>Researchers</h4>
+          </div>
+        </div>
+
+        <div class="chart_column col4">
+          <div class="category">
+            <h6>industry</h6>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience industry">
+            <h4>Industry</h4>
+          </div>
+        </div>
+
+        <div class="chart_column col5">
+          <div class="category">
+            <h6>About</h6>
+          </div>
+          <div class="vert_line"></div>
+          <div class="audience watcher">
+            <h4>Watchers</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav_wrapper top_border">
+        <div class="description_wrapper">
+          <h2>Navigation tailored for every section.</h2>
+          <p>Different audiences have different needs, so our navigation reflects this. We tailor each navigation menu to be meaningful to the section’s key audience.</p>
+        </div>
+
+        <div class="video_wrapper">
+          <video class="video-js vjs-default-skin" preload="none" width="554" height="450"
+  data-setup="{}" autoplay loop webkit-playsinline>
+            <source src="static/video/desktop.mp4" type='video/mp4' />
+            <source src="static/video/desktop.webm" type='video/webm' />
+            <source src="static/video/desktop.ogv" type='video/ogg' />
+          </video>
+        </div>
+      </div>
+
+      <div class="nav_wrapper">
+        <div class="description_wrapper">
+          <h2>Intuitive mobile navigation that just works.</h2>
+          <p>A smaller screen shouldn’t mean a smaller experience. Tablets get the full desktop navigation optimized for touch instead of click. At phone size, our mobile menu allows access to any part of the site, and a secondary navigation at the top of the page helps users discover deeper content.</p>
+        </div>
+
+        <div class="video_wrapper">
+          <video class="video-js vjs-default-skin" preload="none" width="554" height="450"
+  data-setup="{}" autoplay loop webkit-playsinline>
+            <source src="static/video/touch.mp4" type='video/mp4' />
+            <source src="static/video/touch.webm" type='video/webm' />
+            <source src="static/video/touch.ogv" type='video/ogg' />
+          </video>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="feedback_container">
+    <div class="wrapper">
+      <h1>We want your thoughts.</h1>
+      <p>If you have ideas or suggestions you think might help us make consumerfinance.gov even more successful, we’d like to hear them. Use our contact information or the comment section below to share your ideas or start a conversation.</p>
+      
+      <div class="email_link_wrapper">
+        <h6><img alt="email icon" src="static/img/mail.png"> email: <a class="link" href="mailto:meredith.mark@cfpb.gov?Subject=cf.gov%20refresh%20thoughts" target="_top">Meredith.Mark@cfpb.gov</a></h6>
+      </div>
+
+      <div id="comments_wrapper">
+        <h3>Have a suggestion? Add a comment below. (<span></span>)</h3>
+        <form>
+          <h6>First and last name</h6>
+          <input id="name_input" type="text" name="name" maxlength="70"></input>
+          <h6>Enter your comment or suggestion</h6>
+          <textarea id="comment_textarea" name="textarea" maxlength="800"></textarea>
+          <div class="button_wrapper">
+            <a class="btn submit">Submit</a>
+            <a class="btn btn-link btn-warning cancel">Cancel</a>
+          </div>
+        </form>
+        <div id="comments_container">
+          
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<!--
+    ============
+    BODY SCRIPTS
+    ============
+    The number of scripts here must be kept to a minimum. Unless adding a significant amount of JS that is
+    specific to a single page or section of the site, all custom JS should be added to src/static/js/app.js.
+-->
+<script type="text/javascript" src="static/js/base64.js"></script>
+<script type="text/javascript" src="static/js/main.js"></script>
+<script type="text/javascript" src="static/js/cheet.min.js"></script>
+<script type="text/javascript" src="static/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="static/js/jquery.contentcarousel.js"></script>
+
+</body>
+
+</html>
